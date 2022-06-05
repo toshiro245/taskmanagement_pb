@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}
+regist - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/user_regist.css' %}">
+
+
+<div class="regist-wrapper">
+    <div class="regist">
+        <h3>Welcome! Please Sign Up!</h3>
+
+        <form method="POST" class="regist-form">
+            {% csrf_token %}
+            <div class="error-message">
+                {{ form.non_field_errors }}
+                {% if form.errors %}
+                    {% for key, value in form.errors.items %}
+                        {% if key != '__all__' %}
+                            <p>{{ value }}</p>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+            <div class="form-content">{{ form.email }}</div>
+            <div class="form-content">{{ form.password }}</div>
+            <div class="form-content">{{ form.confirm_password }}</div>
+            <div class="form-content">
+                <p class="country-label">Your country</p>
+                {{ form.country }}
+            </div>
+            <input class="btn-regist" type="submit" value="Sign Up">
+            <br><br>
+            <a href="{% url 'accounts:user_login' %}">Login Page</a>
+
+        </form>
+
+    </div>
+</div>
+
+
+{% endblock %}

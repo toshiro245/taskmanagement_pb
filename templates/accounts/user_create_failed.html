@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+An error has occurred.
+{% for error_message in error_messages %}
+{{ error_message }}
+{% endfor %}
+
+<p><a href="{% url 'accounts:user_regist' %}">Sign Up</a></p>
+
+{% endblock %}

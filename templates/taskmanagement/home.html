@@ -1,0 +1,308 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+
+
+<div class="main-contents">
+    <h2 class="main-title">Dashboard</h2>
+
+    <div class="main-upper">
+
+        <div class="title-wapper">
+            <h3 class="task-list">
+                <img src="{% static 'images/checkicon.png' %}" width="15px">
+                Task List
+            </h3>
+            {% if task_length < 8 %}
+                <a href="{% url 'taskmanagement:task_create' %}"><button class="create-btn"> +Create</button></a>
+            {% else %}
+                <button class="create-btn">Max 8items</button>
+            {% endif %}
+        </div>
+
+        <div class="container">
+            {% for task in tasks %}
+                <div class="item" name="{{ task.id }}" value="{{ task.task_name }}" style="border: 2px solid {{ task.color }};">
+                    <span class="item-name">{{ task.task_name | truncatechars:30 }}</span>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="main-lower">
+
+        <div class="title-wapper">
+            <h3 style="color:darkblue">
+                <img src="{% static 'images/checkicon.png' %}" width="15px">
+                Recent Record
+            </h3>
+            <a href="{% url 'taskmanagement:record_create' %}"><button class="create-btn">+Create</button></a>
+        </div>
+
+        <div class="table-wrap">
+            <table class="recent-record-table" border="1">
+                    <tr>
+                        <th>Task</th>
+                        <th>Date</th>
+                        <th>Record</th>
+                        <th></th>
+                    </tr>
+                    {% for task_record in task_records %}
+                    <tr>
+                        <td>{{ task_record.task.task_name }}</td>
+                        <td>{{ task_record.study_at_local }}</td>
+                        {% if task_record.time_hour == 0 %}
+                            <td>{{ task_record.time_min }}m</td>
+                        {% else %}
+                            <td>{{ task_record.time_hour }}h{{ task_record.time_min }}m</td>
+                        {% endif %}
+                        <td>
+                            <a href="{% url 'taskmanagement:record_update' task_record.id %}"><button class="edit-btn">Edit</button></a>
+                            <button type="submit" class="record-delete-btn" value="{{ task_record.id }}">Delete</button>
+                        </td>
+                        
+                    </tr>
+                    {% endfor %}
+            </table>
+        </div>
+
+    </div>
+</div>
+
+<div class="right-menu">
+    <div class="right-upper">
+        <h4 class="memo-title" style="color: darkblue;">Memo</h4>
+        <a href="{% url 'taskmanagement:update_memo' memo.pk %}"><button class="create-btn memo-btn">+Create</button></a>
+        <div class="memo">
+            {% if memo.memo != None %}
+                {{ memo.memo | linebreaksbr }}
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="right-lower">
+        <h4 class="total-record-title" style="color: darkblue;">TotalRecord</h4>
+        <div class="period-btn-wrapper-total">
+            <button class="period-btn-total btn-active" value="7">1week</button>
+            <button class="period-btn-total" value="30">1month</button>
+            <button class="period-btn-total" value="90">3months</button>
+        </div>
+        <div class="canvas-container-integrated">
+            <canvas id="my_chart_integrated">Canvas Not supported</canvas>
+        </div>    
+    </div>
+</div>
+
+<script src="{% static 'js/home.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+
+<!-- グラフモーダル -->
+<div id="overlay" class="overlay"></div>
+<div class="modal-window">
+    <span class="close-btn">×</span>
+
+    <div class="task-menu">
+
+        <div class="task-btn">
+            <a id="task-edit-btn" href="">Task Edit</a>
+            <button id="task-delete-btn" class="task-delete-btn">Task Delete</button>
+        </div>
+
+        <div class="period-btn-wrapper">
+            <button class="period-btn btn-active" value="7">1week</button>
+            <button class="period-btn" value="30">1month</button>
+            <button class="period-btn" value="90">3months</button>
+            <button class="period-btn" value="180">6months</button>
+            <button class="period-btn" value="365">1year</button>
+        </div>
+
+    </div>
+    
+    <div class="canvas-container">
+        <canvas id="my_chart">Canvas Not supported</canvas>
+    </div>    
+    <a id="task-start-btn" href="" class="btnarrow4">Task Start</a>
+
+</div>
+
+<!-- デリート確認モーダル(タスク用) -->
+<div id="delete-modal-wrapper" class="delete-modal-wrapper">
+    <div class="delete-modal">
+        <p class="task-title"></p>
+        <hr class="hr-modal">
+        <p>
+        Is is all right to delete this task completely?<br>
+        (The record will also be deleted.)
+        </p>
+        <div class="delete-modal-btn">
+            <form action="{% url 'taskmanagement:task_delete' %}" method="POST" class="form-delete">
+                {% csrf_token %}
+                <input id="hidden-delete" type="hidden" name="task_id" value="">
+                <button type="submit" class="modal-btn delete-btn">Delete</button>
+            </form>
+            <button type="button" class="modal-btn cancel-btn">Cancel</button>
+        </div>
+    </div>
+</div>
+
+
+<!-- デリート確認モーダル(レコード用) -->
+<div id="delete-record-modal-wrapper" class="delete-modal-wrapper">
+    <div class="delete-modal">
+        <p class="task-title"></p>
+        <hr class="hr-modal">
+        <p>
+        Is is all right to delete this task record?<br>
+        </p>
+        <div class="delete-modal-btn">
+            <form action="{% url 'taskmanagement:record_delete' %}" method="POST" class="form-delete">
+                {% csrf_token %}
+                <input id="hidden-record-delete" type="hidden" name="task_record_id" value="">
+                <button type="submit" class="modal-btn delete-btn">Delete</button>
+            </form>
+            <button type="button" class="modal-btn cancel-btn" id="delete-record-cancel-btn">Cancel</button>
+        </div>
+    </div>
+</div>
+
+
+<!-- スマホ用ナビゲーションメニュー -->
+<div class="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+<nav class="globalMenuSp">
+      <ul>
+        <br><br><br>
+        {% if user.is_authenticated %} 
+            <li style="margin-bottom: 20px;"><a href="{% url 'taskmanagement:home' %}" style="display:block; text-decoration:none;"><img style="margin-right: 10px; background:white" src="{% static 'images/home.png' %}" width="20px">Dashboard</a></li>
+            <li style="margin-bottom: 20px;"><a href="{% url 'accounts:user_edit' pk=user.id %}" style="display:block; text-decoration:none;"><img style="margin-right: 10px; background:white;" src="{% static 'images/setting.png' %}" width="20px">Settings</a></li>
+            <li><a href="{% url 'accounts:user_logout' %}" style="display:block; text-decoration:none; color:white"><img style="margin-right: 10px; background: white;" src="{% static 'images/logout.png' %}" width="20px">Logout</a></li>
+        {% endif %}
+      </ul>
+</nav>
+
+<input name="csrfToken" value="{{ csrf_token }}" type="hidden">
+
+
+<script>
+    (function() {
+        'user strict';
+
+        const data_js = JSON.parse('{{ data | safe }}');
+
+        var type = 'bar';
+        
+        var data = data_js;
+        
+        var options = {
+            animation: {
+                duration: 1000,
+            },
+            legend: {
+                display: false
+            },
+            scales: {
+                xAxes: [{
+                    ticks: {
+                        fontColor: "black",
+                        fontSize: 12,
+                        callback: function(value, index, values){
+                            return [value.substr(5,2) + '/' + value.substr(8,2)]
+                        },
+                    },
+                    gridLines: {
+                        color: 'rgba(48, 48, 47, 0.3)',
+                    },
+                    stacked: true
+                }],
+                yAxes: [{
+                    stacked: true,
+                    ticks: {
+                        fontColor: "black",
+                        fontSize: 10,
+                        suggestedMin: 0,
+                        suggestedMax: 1800,
+                        stepSize: 3600,
+                        callback: function(value, index, values){
+                            return String(value / 3600) + 'hours'
+                        },
+                    },
+                    gridLines: {
+                        color: 'rgba(48, 48, 47, 0.3)',
+                    },
+                }],
+            },
+            tooltips: {
+                mode: 'label',
+                callbacks: {
+                    label: function(tooltipItem, data){
+                        let value = tooltipItem.value;
+                        let index = tooltipItem.datasetIndex;
+                        let label = data.datasets[index].label;
+                        if (String(Math.floor(value / 3600))==0 && String(Math.floor(value%3600/60))==0) {
+                            return undefined;
+                        }
+                        else {
+                            return label + ':' + String(Math.floor(value / 3600)) + 'hour' + ' ' + String(Math.floor(value%3600/60)) + 'min';
+                        }
+                    }
+                }
+            },
+            responsive: true,
+            maintainAspectRatio: false,
+        };
+
+        var ctx = document.getElementById('my_chart_integrated').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: type,
+            data: data,
+            options: options,
+        });
+
+        $('.period-btn-total').click(function () {
+            $('.period-btn-total').removeClass('btn-active');
+            $(this).addClass('btn-active');
+            var offset = $(this).val()
+    
+            // グラフ用の必要情報取得Ajax
+            var token = $('input[name="csrfToken"]').attr('value');
+            $.ajaxSetup({
+                beforeSend: function(xhr){
+                    xhr.setRequestHeader('X-CSRFToken', token);
+                }
+            })
+            $.ajax({
+                type: "POST",
+                url: "{% url 'taskmanagement:get_total_record' %}",
+                data: {
+                    'offset': offset,
+                },
+                dataType: 'json',
+                success: function(response){
+                    var data = response.data
+                    
+                    $('#my_chart_integrated').remove();
+                    $('.canvas-container-integrated').append("<canvas id='my_chart_integrated'></canvas>");
+                    var ctx = document.getElementById('my_chart_integrated').getContext('2d');
+                    var myChart = new Chart(ctx, {
+                        type: type,
+                        data: data,
+                        options: options,
+                    });
+                }
+            }); 
+        });
+
+    })();
+
+
+
+
+</script>
+
+
+{% endblock %}

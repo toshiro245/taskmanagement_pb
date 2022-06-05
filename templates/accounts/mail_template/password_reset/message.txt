@@ -1,0 +1,4 @@
+Please access to the URL below and reset your password.
+
+URL for resetting password
+{{ protocol}}://{{ domain }}{% url 'accounts:user_password_reset_confirm' uidb64=uid token=token %}

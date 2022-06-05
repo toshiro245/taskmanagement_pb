@@ -1,0 +1,174 @@
+.main-wrapper {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.task-title {
+    width: 60%;
+    margin: 40px auto;
+    font-size: 40px;
+}
+
+.container {
+    margin-left: 10%;
+    width: 85%;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 15px;
+    text-align: center;
+}
+
+#timer {
+    background-color: #ddd;
+    height: 300px;
+    line-height: 300px;
+    font-size: 170px;
+    margin-bottom: 15px;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn {
+    width: 220px;
+    height: 70px;
+    line-height: 70px;
+    background-color: #ddd;
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
+    font-size: 25px;
+}
+
+.btn-record {
+    background-color: rgba(224, 211, 245, 1);
+}
+
+.inactive {
+    opacity: 0.4;
+}
+
+/* loading modal */
+.loading-modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding-top: 10%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: : 100;
+    text-align: center;
+    display: none;
+}
+
+canvas {
+    background-color: white;
+    margin-top: 70px;
+}
+
+/* success modal */
+.success-modal-wrapper {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding-top: 20%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: : 100;
+    display: none;
+}
+
+.success-modal {
+    background-color: rgba(242, 236, 235, 1);
+    padding: 20px 40px 40px;
+    border-radius: 10px;
+    width: 50%;
+    margin: 0 auto;
+    font-size: 25px;
+}
+
+
+
+
+/* レスポンシブデザイン */
+@media(max-width: 1100px) {
+.task-title {
+    width: 70%;
+    font-size: 35px;
+}
+
+.container {
+    margin-left: 10%;
+    width: 450px;
+}
+
+#timer {
+    font-size: 100px;
+    width: 100%;
+}
+
+.btn {
+    width: 80px;
+    height: 60px;
+    line-height: 60px;
+    font-size: 20px;
+}
+
+}
+    
+    
+@media(max-width: 670px) {
+.left-menu {
+    width: initial;
+}
+
+.task-title {
+    width: 95%;
+    margin: 30px auto;
+    font-size: 20px;
+}
+
+.container {
+    width: 270px;
+}
+
+#timer {
+    font-size: 50px;
+    width: 100%;
+    height: 200px;
+    line-height: 200px;
+}
+
+.btn {
+    width: 60px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 15px;
+}
+
+.success-modal {
+    padding: 20px 25px 40px;
+    width: 90%;
+    font-size: 16px;
+}
+}
+
+
+@media(max-width: 400px) {
+
+.container {
+    width: 240px;
+}
+
+#timer {
+    font-size: 50px;
+    width: 100%;
+    height: 200px;
+    line-height: 200px;
+}
+}
+    

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}
+login - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/user_login.css' %}">
+
+<div class="login-wrapper">
+    <div class="login">
+        <h3>Login</h3>
+
+        <form method="POST" class="login-form">
+            {% csrf_token %}
+            <div class="error-message">
+            {{ form.non_field_errors }}
+                {% if form.errors %}
+                    {% for key, value in form.errors.items %}
+                        {% if key != '__all__' %}
+                            <p>{{ value }}</p>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+            <div class="form-content">{{ form.username }}</div>
+            <div class="form-content">{{ form.password }}</div>
+            <div class="form-content">{{ form.remember.label }} {{ form.remember }}</div>
+            <input class="btn-login" type="submit" value="Login">
+
+            <div class="others-btn">
+                <a class="btn user-regist-btn" href="{% url 'accounts:user_regist' %}">Sign Up</a>
+                <a class="btn forget-password-btn" href="{% url 'accounts:user_password_reset' %}">Forgot Password</a>
+            </div>
+
+        </form>
+    </div>
+
+</div>
+
+{% endblock %}

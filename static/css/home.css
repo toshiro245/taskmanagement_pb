@@ -1,0 +1,671 @@
+.main-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+/* 中央 */
+.main-contents {
+    width: 60%;
+    padding: 35px 10px 10px 30px;
+}
+
+.main-title {
+    color:darkblue;
+    margin-bottom: 5%;
+}
+
+.main-upper {
+    height: 35vh;
+    margin-bottom: 20px;
+}
+
+.main-lower {
+    height: 35vh;
+}
+
+.title-wapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.create-btn {
+    /* height: 50px; */
+    padding: 5px 30px;
+    border-radius: 10px;
+    border: 0.5px solid gray;
+    background-color: rgba(230, 230, 227, 0.6);
+    cursor: pointer;
+    margin-right: 2rem;
+}
+
+.create-btn:hover{
+    box-shadow: 0 0 4px gray;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 10px;
+    margin: 0 0 10% 0;
+}
+
+.task-list {
+    color:darkblue;
+}
+
+.item {
+    /* box-shadow: 2px 2px 2px gray; */
+    box-shadow: 0 0 4px gray;
+    color: gray;
+    padding: 8px;
+    height: 50px;
+    border-radius: 5px;
+    font-weight: bold;
+    background-color: white;
+}
+
+.item:hover {
+    cursor: pointer;
+    box-shadow: 0 0 8px gray;
+}
+
+
+.edit-btn {
+    background-color: white;
+    border: 1.5px solid rgba(36, 134, 255);
+    border-radius: 5px;
+    padding: 1.5px 10px;
+    cursor: pointer;
+    margin-right: 15px;
+}
+
+.edit-btn:hover {
+    background-color: rgba(36, 134, 255, 0.3);
+}
+
+.record-delete-btn {
+    background-color: white;
+    border: 1.5px solid rgba(255, 23, 73);
+    border-radius: 5px;
+    padding: 1.5px 10px;
+    cursor: pointer;
+}
+
+.record-delete-btn:hover {
+    background-color: rgba(255, 23, 73, 0.3);
+}
+
+
+.task-name {
+    width: 65%;
+}
+.task-time {
+    font-size: 14px;
+    /* font-style: italic; */
+}
+.last-24hours {
+    font-size: 10px;
+} 
+
+
+
+.recent-record-table {
+    width: 95%;
+    text-align: center;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: none;
+    background-color: white;
+    box-shadow: 0 0 1px gray;
+}
+
+.recent-record-table th {
+    padding: 7px;
+    border: none;
+    border-bottom: solid 1px gray;
+}
+
+.recent-record-table td {
+    padding: 7px;
+    font-size: 14px;
+    border: none;
+    color: gray;
+}
+
+
+/* 右側 */
+.right-menu {
+    width: 20%;
+    padding: 35px 10px 10px 10px;
+    /* background-color: #faa; */
+}
+
+.right-upper {
+    height: 50%;
+}
+
+.memo {
+    height: 85%;
+    background-color: white;
+    border-radius: 10px;
+    overflow: auto;
+    color: black;   
+    font-size: 14px; 
+}
+
+.memo-title {
+    display: inline-block;
+}
+
+.memo-btn {
+    padding: 3px 15px;
+    margin-left: 5%;
+}
+
+.right-lower {
+    margin-top: 15%;
+}
+
+.canvas-container-integrated {
+    margin-top: 2%;
+    height: 250px;
+}
+
+.total-record-title {
+    display: inline;
+}
+
+.period-btn-wrapper-total {
+    margin-top: 2%;
+    margin-bottom: 3%;
+}
+
+.period-btn-total {
+    border: none;
+    background: transparent;
+    font-size: 12px;
+    padding: 3px 5px;
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+}
+
+.period-btn-total:hover {
+    background-color: rgba(245, 245, 242, 0.7);
+    border-radius: 5px;
+    transition: 0.4s;   
+}
+
+
+
+/* モーダル */
+/* モーダルウィンドウ */
+.modal-window {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    height: 60%;
+    background-color: #dfdddd;
+    border-radius: 5px;
+    z-index: 11;
+    padding: 2rem;
+    padding-bottom: 5%;
+}
+
+.task-menu {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.task-btn {
+    display: flex;
+    justify-content: flex-start;
+}
+
+#task-edit-btn {
+    padding: 5px 10px;
+    background-color: white;
+    border: 1.5px solid rgba(36, 134, 255);
+    border-radius: 5px;
+    padding: 1.5px 10px;
+    cursor: pointer;
+    margin-right: 5px;
+    text-decoration: none;
+    color: black;
+    font-size: 12px;
+}
+
+#task-edit-btn:hover {
+    box-shadow: 0 0 6px gray;
+}
+
+.task-edit-btn:hover {
+    box-shadow: 0 0 6px gray;
+}
+
+.task-delete-btn {
+    background-color: white;
+    border: 1.5px solid rgba(255, 23, 73);
+    border-radius: 5px;
+    padding: 1.5px 10px;
+    cursor: pointer;
+}
+
+.task-delete-btn:hover {
+    box-shadow: 0 0 6px gray;
+}
+
+.period-btn {
+    border: none;
+    background: transparent;
+    font-size: 12px;
+    padding: 3px 5px;
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+}
+
+.period-btn:hover {
+    background-color: rgba(245, 245, 242, 0.7);
+    border-radius: 5px;
+    transition: 0.4s;   
+}
+
+.btn-active {
+    background-color: white;
+    border-radius: 5px;
+    pointer-events: none;
+}
+
+.canvas-container {
+    margin: 0 auto;
+    margin-top: 3%;
+    width: 95%;
+    height: 90%;
+}
+
+  /* 閉じるボタン */
+.close-btn {
+    float: right;
+    cursor: pointer;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+}
+
+/*矢印が右に移動する*/
+.btnarrow4{
+    /*矢印と下線の基点とするためrelativeを指定*/
+    position: relative;
+    /*形状*/
+    display: inline-block;
+    padding: 0 20px;
+    color: #333;
+    text-decoration: none;
+    outline: none;
+    float: right;
+    font-weight: bold;
+    /* margin-bottom: 5%; */
+}
+
+/*矢印と下線の形状*/
+.btnarrow4::before{
+    content: '';
+    /*絶対配置で下線の位置を決める*/
+    position: absolute;
+    bottom:-8px;
+    left:15%;
+    /*下線の形状*/    
+    width: 85%;
+    height: 1px;
+    background:#333;
+    /*アニメーションの指定*/
+    transition: all .3s;
+}
+
+.btnarrow4::after{
+    content: '';
+    /*絶対配置で矢印の位置を決める*/
+    position: absolute;
+    bottom:-3px;
+    right:0;
+    /*矢印の形状*/    
+    width: 15px;
+    height:1px;
+    background:#333;
+    transform: rotate(35deg);
+    /*アニメーションの指定*/
+    transition: all .3s;
+}
+
+/*hoverした際の移動*/
+.btnarrow4:hover::before{
+    left:20%;
+    height:4px;
+}
+
+.btnarrow4:hover::after{
+    right:-5%;
+    height:4px;
+}
+
+/* デリートモーダル */
+.delete-modal-wrapper {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding-top: 10%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 100;
+    display: none;
+}
+
+.delete-modal {
+    margin-top: 10px;
+    background-color: rgba(242, 236, 235, 1);
+    padding: 20px 40px 40px;
+    border-radius: 10px;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.form-delete {
+    display: inline-block;
+}
+
+.delete-modal-btn {
+    text-align: right;
+}
+
+.modal-btn {
+    font-size: 15px;
+    padding: 7px 15px;
+    border-radius: 5px;
+    border: 1px solid gray;
+}
+
+.delete-btn{
+    background-color: rgba(240, 186, 175, 0.5);
+}
+
+.cancel-btn {
+    background-color: rgba(209, 204, 203, 0.6);
+}
+
+.delete-btn:hover {
+    cursor: pointer;
+    background-color: rgba(240, 186, 175, 1);
+}
+
+.cancel-btn:hover{
+    cursor: pointer;
+    background-color: rgba(209, 204, 203, 1);
+}
+
+.hr-modal {
+    width: 100%;
+}
+
+
+/* レスポンシブ */
+@media(max-width: 1400px) {
+
+.main-contents {
+    width: 55%;
+}
+
+.container{
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.right-menu {
+    width: 25%;
+}
+
+.canvas-container {
+    height: 85%;
+    margin-top: 5%;
+}
+    
+}
+
+@media(max-height: 800px) and (max-width: 1400px) {
+.main-wrapper {
+    min-height: 830px;
+}
+.main-lower {
+    margin-top: 15%;
+}
+}
+
+
+@media(max-width: 1100px) {
+
+.main-wrapper {
+    min-height: 1000px;
+}
+
+
+.container {
+    grid-template-columns: 1fr 1fr;
+}
+
+.main-upper {
+    height: 50vh;
+    margin-bottom: 1px;
+}
+
+.left-menu {
+    width: 8%;
+}
+
+.main-contents {
+    width: 55%;
+}
+
+.right-menu {
+    width: 28%;
+    height: 60vh;
+}
+
+.recent-record-table {
+    width: 150%;
+}
+
+.right-upper {
+    height: 35%;
+    margin-bottom: 20%;
+}
+
+.right-lower {
+    margin-top: 30%;
+    height: 40%;
+}
+
+.canvas-container-integrated {
+    height: 220px;
+}
+
+.modal-window {
+    width: 75%;
+    height: 50%;
+}
+
+.delete-modal {
+    width: 70%;
+}
+
+#task-edit-btn {
+    padding: 3px 6px;
+    margin-right: 2px;
+    font-size: 12px;
+}
+
+.task-delete-btn {
+    padding: 3px 6px;
+    margin-right: 3px;
+    font-size: 12px;
+}
+
+.period-btn {
+    padding: 3px 3px;
+}
+
+.memo-btn {
+    padding: 3px 8px;
+    margin-left: 3%;
+}
+
+}
+
+
+@media(max-width: 670px) {
+
+.main-wrapper {
+    display: initial;
+    justify-content: initial;
+}
+
+.left-menu {
+    display: none;
+}
+
+
+.main-contents {
+    width: 80%;
+    margin: 0 auto;
+    padding: initial;
+}
+
+.main-upper {
+    height: initial;
+    margin-bottom: 20px;
+}
+
+.container {
+    grid-template-columns: 1fr;
+}
+
+.table-wrap {
+    overflow-x: scroll;
+}
+
+.recent-record-table {
+    min-width: 550px;
+}
+
+.right-menu {
+    width: 80%;
+    margin: 0 auto;
+}
+
+h3, h4 {
+    font-size: 17px;
+}
+
+.right-upper {
+    height: 45%;
+}
+
+.right-lower {
+    margin-top: 0;
+    height: 35%;
+}
+
+.modal-window {
+    width: 80%;
+    height: 45%;
+}
+
+.canvas-container {
+    width: 100%;
+    height: 70%;
+}
+
+.delete-modal {
+    width: 70%;
+    font-size: 14px;
+}
+
+.modal-btn {
+    font-size: 13px;
+    padding: 5px 10px;
+}
+
+.task-menu {
+    display: initial;
+    justify-content: initial;
+}
+
+.canvas-container {
+    margin-top: 1%;
+    height: 70%;
+}
+
+@media(max-height: 800px) and (max-width: 670px) {
+.right-upper {
+    margin-top: 90px;
+}
+}
+
+}
+
+@media(max-width: 400px) {
+.main-contents {
+    margin-bottom: 25%;
+}
+
+h3, h4 {
+    font-size: 15px;
+}
+
+.right-menu {
+    height: 110vh;
+}
+
+.right-upper {
+    height: 45%;
+}
+
+.right-lower {
+    height: 35%;
+}
+
+.item {
+    height: 45px;
+}
+
+.item-name {
+    line-height: 45px;
+}
+
+.btnarrow4{
+    font-size: 12px;
+}
+
+.canvas-container {
+    margin-top: initial;
+    /* width: 95%; */
+    height: 60%;
+}
+
+
+}

@@ -1,0 +1,51 @@
+.main-wrapper {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.memo-create-wrapper {
+    margin-top: 2%;
+    margin-left: 5%;
+    width: 80%;
+}
+
+.memo-title {
+    color:darkblue;
+}
+
+.btn-memo-create {
+    border: 1.0px solid black;
+    border-radius: 5px;
+    padding: 3px 15px;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    background-color: rgba(210, 212, 210, 0.2)
+}
+
+.btn-memo-create:hover {
+    background-color: rgba(210, 212, 210, 0.8);
+}
+
+.form-wrapper {
+    width: 80%;
+}
+
+.form-control {
+    width: 90%;
+}
+
+@media(max-width: 670px) {
+
+.left-menu {
+    width: 7%;
+}
+
+.form-wrapper {
+    width: 100%;
+}
+
+.form-control {
+    width: 95%;
+}
+
+}

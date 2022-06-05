@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}
+srudy_main - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/task_conduct.css' %}">
+
+<div>
+    <h2 class="task-title" name="{{ task.id }}">{{ task.task_name }}</h2>
+    <div class="container">
+        <div id="timer">00:00:00</div>
+        <div class="controls">
+            <div class="btn" id="start">Start</div>
+            <div class="btn" id="stop">Stop</div>
+            <div class="btn" id="reset">Reset</div>
+            <div class="btn btn-record" id="record">Record</div>
+        </div>
+        <input name="csrfToken" value="{{ csrf_token }}" type="hidden">
+    </div>
+</div>
+
+<div id="loading-modal" class="loading-modal">
+    <canvas width="150px" height="150px">
+        Canvas Not supported
+    </canvas>
+</div>
+
+<div id="success-modal-wrapper" class="success-modal-wrapper">
+    <div class="success-modal">
+        Record has been completed.<br>
+        Good Job.<br>
+        <div style="text-align:right;"><a href="{% url 'taskmanagement:home' %}">Home</a></div>
+    </div>
+</div>
+
+<script src="{% static 'js/task_conduct.js' %}"></script>
+
+{% endblock %}

@@ -1,0 +1,191 @@
+.main-wrapper {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.task-create-wrapper {
+    width: 80%;
+    text-align: center;
+    padding-top: 10%;
+}
+
+.task-create {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.task-create h2 {
+    font-size: 30px;
+    width: 100%;
+    margin: 20px auto;
+    color: rgba(28, 21, 1, 0.8);
+    letter-spacing: 5px;
+}
+
+.task-create-form {
+    margin-top: 60px;
+}
+
+.task-create-form p {
+    text-align: left;
+    font-size: 14px;
+    color:rgba(117, 116, 114, 0.8);
+}
+
+.form-control {
+    width: 70%;
+    padding: 15px;
+    background:#f8f8f8;
+    border:1px solid rgba(155, 122, 122, 0.075);
+    margin-bottom:30px;
+    color:#727272 !important;
+    font-size:15px;
+    z-index: 9999;
+}
+
+.form-color {
+    height: 40px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+
+.btn-task-create {
+    margin-top: 30px;
+    padding: 10px 50px;
+    border-radius: 10px;
+    background-color: rgba(171, 170, 166, 0.3);
+    color: black;
+    font-size: 15px;
+    border: 1px solid gray;
+    cursor: pointer;
+}
+
+.btn-task-create:hover {
+    background-color: rgba(171, 170, 166, 1);
+}
+
+/* only task_update */
+.far {
+    margin-left: 30px;
+    font-size: 18px;
+    border: 1px solid black;
+    padding: 9px 15px;
+    border-radius: 5px;
+    background-color: rgba(240, 186, 175, 0.5);
+}
+
+.far:hover {
+    background-color: rgba(240, 186, 175, 1);
+    cursor: pointer;
+}
+
+/* modal */
+.trash-modal-wrapper {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding-top: 10%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: : 100;
+    display: none;
+}
+
+.trash-modal {
+    margin-top: 10px;
+    background-color: rgba(242, 236, 235, 1);
+    padding: 20px 40px 40px;
+    border-radius: 10px;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.form-trash {
+    display: inline-block;
+}
+
+.trash-modal-btn {
+    text-align: right;
+}
+
+.modal-btn {
+    font-size: 15px;
+    padding: 7px 15px;
+    border-radius: 5px;
+    border: 1px solid gray;
+}
+
+.trash-btn {
+    background-color: rgba(240, 186, 175, 0.5);
+}
+
+.cancel-btn {
+    background-color: rgba(209, 204, 203, 0.6);
+}
+
+.trash-btn:hover{
+    cursor: pointer;
+    background-color: rgba(240, 186, 175, 1);
+}
+
+.cancel-btn:hover{
+    cursor: pointer;
+    background-color: rgba(209, 204, 203, 1);
+}
+
+/* レスポンシブデザイン */
+@media(max-width: 1100px) {
+.trash-modal {
+    width: 70%;
+}
+
+
+}
+
+
+/* レスポンシブデザイン */
+@media(max-width: 670px) {
+
+.left-menu {
+    width: 8%;
+}
+
+.task-create {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.task-create h2 {
+    font-size: 20px;
+    width: 100%;
+    margin: 20px auto;
+    color: rgba(28, 21, 1, 0.8);
+    letter-spacing: 3px;
+}
+
+.form-control {
+    width: 100%;
+}
+
+.btn-task-create {
+    padding: 5px 30px;
+    font-size: 13px;
+}
+
+.far {
+    font-size: 15px;
+    padding: 7px 15px;
+}
+
+.trash-modal {
+    width: 90%;
+    font-size: 14px;
+}
+.modal-btn {
+    font-size: 13px;
+    padding: 5px 10px;
+}
+
+}

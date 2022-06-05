@@ -1,0 +1,16 @@
+{% load static %}
+
+<div class="left-menu">
+    <nav>
+        <div class="logo">
+            <img src="{% static 'images/logo.png' %}" alt="" width="200px">
+        </div>
+        <ul class="main-nav">
+            <li><a href="{% url 'taskmanagement:home' %}" style="display:block; text-decoration:none; color:gray"><img style="margin-right: 10px;" src="{% static 'images/home.png' %}" width="20px">Dashboard</a></li>
+            <li><a href="{% url 'accounts:user_edit' pk=user.id %}" style="display:block; text-decoration:none; color:gray"><img style="margin-right: 10px;" src="{% static 'images/setting.png' %}" width="20px">Settings</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'accounts:user_logout' %}" style="display:block; text-decoration:none; color:gray"><img style="margin-right: 10px;" src="{% static 'images/logout.png' %}" width="20px">Logout</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+</div>

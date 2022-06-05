@@ -1,0 +1,123 @@
+.login-wrapper {
+    text-align: center;
+}
+
+.login {
+    width: 70%;
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+.login h3 {
+    font-size: 30px;
+    letter-spacing: 5px;
+    border-bottom: 2px solid;
+    border-image: linear-gradient(to right, #ddb9eb 0%, #7c9bde 100%) 1/0 0 2px 0;
+    border-style: solid;
+}
+
+.login-form {
+    width: 100%;
+}
+
+.form-control {
+    font-size: 16px;
+    padding: 10px;
+    margin-bottom: 20px;
+    width: 60%;
+    margin-bottom: 10px;
+    border: 1px solid rgba(173, 173, 170, 0.6);
+    border-radius: 10px;
+  }
+
+.form-content {
+    margin-bottom: 20px;
+}
+
+.btn-login {
+    padding: 10px 35px;
+    border-radius: 10px;
+    background-color: rgba(171, 170, 166, 0.3);
+    color: black;
+    font-size: 15px;
+    border: 1px solid gray;
+    cursor: pointer;
+}
+
+.btn-login:hover {
+    background-color: rgba(171, 170, 166, 1);
+}
+
+.form-remember {
+    cursor: pointer;
+}
+
+.error-message {
+    text-align: left;
+    width: 70%;
+    margin: 0 auto;
+    margin-bottom: 40px;
+}
+
+.others-btn {
+    margin-top: 40px;
+}
+
+.btn {
+    border: 1px solid black;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: black;
+    font-size:14px;
+    background-color: rgba(209, 208, 205, 0.4);
+}
+
+.user-regist-btn {
+    margin-right: 25px;
+}
+
+.user-regist-btn:hover {
+    background-color: rgba(209, 208, 205, 0.8);
+}
+
+.forget-password-btn:hover {
+    background-color: rgba(209, 208, 205, 0.8);
+}
+
+
+/* レスポンシブデザイン */
+/* スマホ */
+@media(max-width: 670px) {
+
+.login {
+    width: 90%;
+}
+
+.login h3 {
+    font-size: 18px;
+    letter-spacing: 2px;
+}
+
+.form-control {
+    width: 90%;
+    font-size: 14px;
+    padding: 5px;
+}
+
+.error-message {
+    width: 95%;
+    font-size: 14px;
+
+}
+
+
+.user-regist-btn, .forget-password-btn {
+    display: block;
+    width: 52%;
+    margin: 2% auto;
+    font-size: 12px;
+    padding: 5px 8px;
+}
+
+
+}

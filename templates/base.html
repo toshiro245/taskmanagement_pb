@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Task Management{% endblock %}</title>
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+
+    <div class="main-wrapper"> 
+        <div class="left-menu">
+            <nav>
+                <div class="logo">
+                    <img class="logo-img" src="{% static 'images/logo.png' %}" alt="" width="200px">
+                </div>
+                {% if user.is_authenticated %}
+                <ul class="main-nav">
+                    <li><a href="{% url 'taskmanagement:home' %}" style="display:block; text-decoration:none; color:gray"><img style="margin-right: 10px;" src="{% static 'images/home.png' %}" width="20px">Dashboard</a></li>
+                    <li><a href="{% url 'accounts:user_edit' pk=user.id %}" style="display:block; text-decoration:none; color:gray"><img style="margin-right: 10px;" src="{% static 'images/setting.png' %}" width="20px">Settings</a></li>
+                    <li><a href="{% url 'accounts:user_logout' %}" style="display:block; text-decoration:none; color:gray"><img style="margin-right: 10px;" src="{% static 'images/logout.png' %}" width="20px">Logout</a></li>
+                </ul>
+
+                <ul class="main-nav-tab">
+                    <li><a href="{% url 'taskmanagement:home' %}" style="display:block; text-decoration:none; color:gray"><img style="margin-right: 10px;" src="{% static 'images/home.png' %}" width="20px"></a></li>
+                    <li><a href="{% url 'accounts:user_edit' pk=user.id %}" style="display:block; text-decoration:none; color:gray"><img style="margin-right: 10px;" src="{% static 'images/setting.png' %}" width="20px"></a></li>
+                    <li><a href="{% url 'accounts:user_logout' %}" style="display:block; text-decoration:none; color:gray"><img style="margin-right: 10px;" src="{% static 'images/logout.png' %}" width="20px"></a></li>
+                </ul>
+
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <nav class="globalMenuSp">
+                      <ul>
+                        <br><br><br>
+                        <li style="margin-bottom: 20px;"><a href="{% url 'taskmanagement:home' %}" style="display:block; text-decoration:none;"><img style="margin-right: 10px; background:white" src="{% static 'images/home.png' %}" width="20px">Dashboard</a></li>
+                        <li style="margin-bottom: 20px;"><a href="{% url 'accounts:user_edit' pk=user.id %}" style="display:block; text-decoration:none;"><img style="margin-right: 10px; background:white;" src="{% static 'images/setting.png' %}" width="20px">Settings</a></li>
+                        <li><a href="{% url 'accounts:user_logout' %}" style="display:block; text-decoration:none; color:white"><img style="margin-right: 10px; background: white;" src="{% static 'images/logout.png' %}" width="20px">Logout</a></li>
+                      </ul>
+                </nav>
+
+                {% endif %}
+            </nav>
+        </div>
+
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <script src="{% static 'js/base.js' %}"></script>
+</body>
+
+</html>

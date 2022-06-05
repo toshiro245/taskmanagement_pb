@@ -1,0 +1,8 @@
+Thank you for your registration.
+
+You have not completed your registration yet.
+Please confirm your email address to complete your registration.
+
+URL for registration
+{{ protocol}}://{{ domain }}{% url 'accounts:user_create_complete' token %}
+

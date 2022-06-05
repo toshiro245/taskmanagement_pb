@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}
+taskcreate - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/task_create.css' %}">
+
+<div class="task-create-wrapper">
+    <div class="task-create">
+        <h2>Task Edit Page</h2>
+        <p>Please Input a title and choose a color (used for graph).</p>
+
+        <form method="POST" class="task-create-form">
+            {% csrf_token %}
+
+            {{ form.non_field_errors }}
+            {% if form.errors %}
+                {% for key, value in form.errors.items %}
+                    {% if key != '__all__' %}
+                        <p>{{value.as_text}}</p>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+
+            <div class="form-wrapper">
+                {{ form.task_name }}
+                {{ form.color }}
+            </div>
+            <input class="btn-task-create" type="submit" value="Update">
+            
+            
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

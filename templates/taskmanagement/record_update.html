@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}
+recordcreate - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/record_create.css' %}">
+
+<div class="task-create-wrapper">
+    <div class="task-create">
+        <h2>Create a New Task</h2>
+        <p>Please Input a title and choose a color (used for graph).</p>
+
+        <form method="POST" class="task-create-form">
+            {% csrf_token %}
+
+            {{ form.non_field_errors }}
+            {% if form.errors %}
+                {% for key, value in form.errors.items %}
+                    {% if key != '__all__' %}
+                        <p>{{value.as_text}}</p>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+
+            <div class="form-wrapper">
+                Task:{{ form.task }}<br>
+                Task Record:
+                <span class="form-hour-min">
+                    <span class="form-hour">
+                    {{ form.time_hour }}hour</span>
+                    <span class="form-min">
+                    {{ form.time_min }}min</span>
+                </span><br>
+                Date:<input class="date-form" type="date" name="study_at_local" required value="{{ task_record.study_at_local }}">
+            </div>
+            <input class="btn-task-create" type="submit" value="Update">
+            
+            
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

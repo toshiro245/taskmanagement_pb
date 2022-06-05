@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}
+taskcreate - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/update_memo.css' %}">
+
+<div class="memo-create-wrapper">
+    <div class="memo-create">
+        <h2 class="memo-title">Memo</h2>
+        <p>Please Create Your Memo.</p>
+
+        <form method="POST" class="memo-create-form">
+            {% csrf_token %}
+
+            {{ form.non_field_errors }}
+            {% if form.errors %}
+                {% for key, value in form.errors.items %}
+                    {% if key != '__all__' %}
+                        <p>{{value.as_text}}</p>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+
+            <div class="form-wrapper">
+                {{ form.memo }}
+            </div>
+            <input class="btn-memo-create" type="submit" value="Create">
+            
+            
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}
